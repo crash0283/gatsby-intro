@@ -17,7 +17,9 @@ const Layout = ({ children }) => {
     query SiteTitleQuery {
       site {
         siteMetadata {
-          title
+          title,
+          description,
+          author
         }
       }
     }
@@ -25,7 +27,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={data.site.siteMetadata.title} siteDescription={data.site.siteMetadata.author} about="About Us" contact="Contact Us" blog="Blog" />
       <div
         style={{
           margin: `0 auto`,
@@ -34,13 +36,13 @@ const Layout = ({ children }) => {
           paddingTop: 0,
         }}
       >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        <main style={{ minHeight: "100vh" }}>{children}</main>
       </div>
+      <footer style={{ background: "rgba(50,50,50,0.5", textAlign: "center", minHeight: "3rem" }}>
+        <h3>© {new Date().getFullYear()}, Built with
+          {` `}
+        <a href="https://www.gatsbyjs.org">Gatsby</a></h3>
+      </footer>
     </>
   )
 }
