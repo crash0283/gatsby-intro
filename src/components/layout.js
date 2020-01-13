@@ -7,8 +7,7 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 
@@ -27,7 +26,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} siteDescription={data.site.siteMetadata.author} about="About Us" contact="Contact Us" blog="Blog" />
+      <Header siteTitle={data.site.siteMetadata.title} siteDescription={data.site.siteMetadata.author} about="About" contact="Contact" blog="Blog" />
       <div
         style={{
           margin: `0 auto`,
@@ -39,15 +38,13 @@ const Layout = ({ children }) => {
         <main style={{ minHeight: "100vh" }}>{children}</main>
       </div>
       <footer style={{ background: "rgba(50,50,50,0.5", textAlign: "center", minHeight: "3rem" }}>
-        <h3>© {new Date().getFullYear()}, Built with
-          {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a></h3>
+        <h3>© {new Date().getFullYear()}, Built by <Link to="/" style={{textDecoration: "none"}}>{data.site.siteMetadata.author}</Link></h3>
       </footer>
     </>
   )
 }
 
-Layout.propTypes = {
+Layout.propTypes = { 
   children: PropTypes.node.isRequired,
 }
 
