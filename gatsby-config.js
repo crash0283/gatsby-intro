@@ -10,10 +10,17 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: `gatsby-source-wordpress`,
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+        baseUrl: "http://blogger.local",
+        protocol: `http`,
+        hostingWPCOM: false
+      }
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `blogger-wixbagmhoj`
       }
     },
     `gatsby-plugin-react-helmet`,

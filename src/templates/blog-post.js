@@ -1,48 +1,45 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
 import Layout from "../components/layout"
 
-export const data = graphql`
-  query($slug: String!) {
-    contentfulBlogPost(slug: { eq: $slug }) {
-      author
+export const query = graphql`
+  query($slug: String!){
+    wordpressPost(slug: { eq: $slug }) {
+      id
+      content
       date(fromNow: true)
       slug
       title
-      body {
-        json
+      author {
+        name
       }
     }
   }
 `
 
 const BlogPost = props => {
-  const options = {
-    renderNode: {
-      "embedded-asset-block": node => {
-        const alt = node.data.target.fields.title["en-US"]
-        const url = node.data.target.fields.file["en-US"].url
-        return <img src={url} alt={alt} />
-      },
-    },
+
+  let disqusConfig = {
+    url: `http://localhost:8000/blog/${props.data.wordpressPost.slug}`,
+    identifier: props.data.wordpressPost.id,
+    title: props.data.wordpressPost.title,
   }
 
   return (
     <Layout>
       <div>
-        <h2>{props.data.contentfulBlogPost.title}</h2>
+        <h2>{props.data.wordpressPost.title}</h2>
         <p style={{ fontWeight: 200, fontSize: "0.8rem" }}>
-          Published {props.data.contentfulBlogPost.date}
+          Published {props.data.wordpressPost.date}
         </p>
         <p style={{ fontWeight: 300, fontSize: "0.9rem" }}>
-          Written by {props.data.contentfulBlogPost.author}
+          Written by {props.data.wordpressPost.author.name}
         </p>
-        {documentToReactComponents(
-          props.data.contentfulBlogPost.body.json,
-          options
-        )}
+        <div dangerouslySetInnerHTML={{__html: props.data.wordpressPost.content}}></div>
+        <CommentCount config={disqusConfig} />
+        <Disqus config={disqusConfig} />
         <Link to="/blog">Back to Blog</Link>
       </div>
     </Layout>
