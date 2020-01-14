@@ -12,7 +12,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: "http://localhost:8000/GatsbyWP/",
+        baseUrl: "http://localhost:8888",
         protocol: `http`,
         hostingWPCOM: false,
         useACF: false,
