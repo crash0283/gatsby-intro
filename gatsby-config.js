@@ -14,7 +14,17 @@ module.exports = {
       options: {
         baseUrl: "http://localhost:8000/",
         protocol: `http`,
-        hostingWPCOM: false
+        hostingWPCOM: false,
+        useACF: true,
+        includedRoutes: [
+          //"**/categories",
+          "**/posts",
+          "**/pages",
+          // "**/media",
+          // "**/tags",
+          // "**/taxonomies",
+          // "**/users",
+        ],
       }
     },
     {
