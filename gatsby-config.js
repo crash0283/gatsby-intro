@@ -12,7 +12,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: "blogger.local",
+        baseUrl: "050ac287.ngrok.io",
         protocol: `http`,
         hostingWPCOM: false
       }
