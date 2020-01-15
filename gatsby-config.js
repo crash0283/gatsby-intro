@@ -4,11 +4,17 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Blogger`,
+    title: `Blog Spot`,
     description: `Tag Line`,
     author: `@crasch`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: "blogger-wixbagmhoj"
+      }
+    },
     {
       resolve: `gatsby-source-contentful`,
       options: {
