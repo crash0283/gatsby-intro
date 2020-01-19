@@ -27,7 +27,7 @@ const Blog = () => {
       <Layout>
       {
         !isAuthenticated && (
-          <button onClick={() => loginWithRedirect({})}>Log in</button>
+          <button onClick={() => loginWithRedirect()}>Log in</button>
         )
       }
       {
