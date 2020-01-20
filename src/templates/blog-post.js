@@ -32,7 +32,7 @@ const BlogPost = props => {
       [INLINES.HYPERLINK]: (node) => {
         if(node.data.uri.includes("youtube")) {
           let url = node.data.uri.replace("watch?v=","embed/")
-          return <iframe width="560" height="315" src={url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+          return <iframe title={node.title} width="560" height="315" src={url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
         }
       },
       [BLOCKS.EMBEDDED_ASSET]: node => {

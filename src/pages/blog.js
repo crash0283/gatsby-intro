@@ -1,12 +1,14 @@
-import React,{useEffect, useState} from "react"
+import React from "react"
 import Layout from "../components/layout"
-import { useStaticQuery, graphql, Link, navigate } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import SEO from "../components/seo"
 import { useAuth0 } from "../auth0/auth"
 
 const Blog = () => {
 
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, logout, user, loaded } = useAuth0()
+
+  console.log(user)
 
   const data = useStaticQuery(graphql`
     {
@@ -35,7 +37,9 @@ const Blog = () => {
           <>
           <SEO title="Blog" />
           <h1>Blog</h1>
-
+          {
+            user && (<h4>Welcome, {user.given_name || user.nickname}</h4>)
+          }
           <div>
           {
               data.allContentfulBlogPost.edges.map((post,i) => {
