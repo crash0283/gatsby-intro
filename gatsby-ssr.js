@@ -12,9 +12,9 @@ export const wrapRootElement = ({ element }) => {
     // `https://unruffled-darwin-677325.netlify.com/blog`
   return (
     <Auth0Provider
-      domain={process.env.AUTH_DOMAIN}
-      client_id={process.env.AUTH_CLIENT_ID}
-      redirect_uri={process.env.AUTH_REDIRECT_URL}
+      domain={process.env.GATSBY_AUTH_DOMAIN}
+      client_id={process.env.GATSBY_AUTH_CLIENT_ID}
+      redirect_uri={process.env.GATSBY_AUTH_REDIRECT_URL}
     >
       {element}
     </Auth0Provider>

@@ -8,8 +8,6 @@ const Blog = () => {
 
   const { isAuthenticated, loginWithRedirect, logout, user, loaded } = useAuth0()
 
-  console.log(user)
-
   const data = useStaticQuery(graphql`
     {
       allContentfulBlogPost(sort: {fields: date, order: DESC}) {
