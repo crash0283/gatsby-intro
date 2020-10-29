@@ -2,7 +2,7 @@ import React from "react"
 import Layout from "../components/layout"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import SEO from "../components/seo"
-import { useAuth0 } from "../auth0/auth"
+import { useAuth0 } from "@auth0/auth0-react"
 
 const Blog = () => {
 
@@ -22,7 +22,7 @@ const Blog = () => {
       }
     }
   `)
-  
+  console.log(isAuthenticated)
     return (
       <Layout>
       {

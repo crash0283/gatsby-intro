@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { INLINES,BLOCKS } from "@contentful/rich-text-types"
 import {Disqus} from "gatsby-plugin-disqus"
+import {withAuthenticationRequired} from "@auth0/auth0-react"
 
 import Layout from "../components/layout"
 
@@ -66,4 +67,4 @@ const BlogPost = props => {
   )
 }
 
-export default BlogPost
+export default withAuthenticationRequired(BlogPost) 
